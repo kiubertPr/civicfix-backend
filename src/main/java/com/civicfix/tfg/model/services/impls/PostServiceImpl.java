@@ -201,7 +201,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<Post> getPostsByAuthor(Long userId) throws InstanceNotFoundException {
         Optional<Post> post = postDao.findById(userId);
         if (!post.isPresent())
@@ -211,19 +211,19 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Page<Post> getPostsByCategory(Post.Category category, Pageable pageable) {
         return postDao.findByCategory(category, pageable);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<Post> getPostsByCategory(Post.Category category) {
         return postDao.findByCategoryOrderByDateDesc(category);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<Post> getLastPosts() {
         return postDao.findByDateAfter(LocalDateTime.now().minusHours(72));
     }
@@ -309,7 +309,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Map<Long, Integer> getVotesByUserIdAndOPostVotesIn(Long userId, List<Long> postIds) {
 
         Map<Long, Integer> voteMap = new HashMap<>();
@@ -320,7 +320,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Map<Long, Integer> getVoteSumsByPostIds(List<Long> postIds) {
         Map<Long, Integer> voteMap = new HashMap<>();
         List<VoteSummary> voteSummaries = postVoteDao.findVoteSumsByPostIds(postIds);
@@ -330,13 +330,13 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<PostVote> getVotesByPostId(Long postId) {
         return postVoteDao.findByPostId(postId);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<PostDao.PostToListView> getPostsToListViewBySolved(boolean isSolved) {
         return postDao.findBySolved(isSolved);
     }

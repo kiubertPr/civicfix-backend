@@ -337,4 +337,5 @@ public class PostController {
         List<PostDao.PostToListView> posts = postService.getPostsToListViewBySolved(isSolved);
         return ResponseEntity.ok(posts);
     }
+    
 }

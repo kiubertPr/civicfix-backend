@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public User login(String username, String password) throws IncorrectLoginException, InstanceNotFoundException, UserDisableException {
         
         Optional <User> user = userDao.findByUsername(username);
@@ -211,7 +211,7 @@ public class UserServiceImpl implements UserService{
     
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Integer countUsersByRole(User.Role role) {
         return userDao.countByRole(role);
     }

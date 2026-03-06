@@ -1,5 +1,6 @@
 package com.civicfix.tfg.model.entities.daos;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -33,4 +34,7 @@ public interface UserDao extends JpaRepository<User, Long> {
    User findByGoogleIdOrEmail(String googleId, String email);
 
    Integer countByRole(User.Role role);
+
+   @Query("SELECT u.avatarId FROM User u WHERE u.avatarId IS NOT NULL")
+   List<String> findAllAvatarIds();
 }

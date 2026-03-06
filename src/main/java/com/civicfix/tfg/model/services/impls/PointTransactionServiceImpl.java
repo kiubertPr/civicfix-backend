@@ -74,7 +74,7 @@ public class PointTransactionServiceImpl implements PointTransactionService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public long getTotalPointsByUserId(Long userId) throws InstanceNotFoundException {
         
         permissionChecker.checkUser(userId);
@@ -84,7 +84,7 @@ public class PointTransactionServiceImpl implements PointTransactionService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Map<Long, Long> getTotalPointsByUserIds(List<Long> userIds) throws InstanceNotFoundException {
 
         return pointTransactionDao.findTotalPointsByUserIds(userIds).stream()
@@ -95,7 +95,7 @@ public class PointTransactionServiceImpl implements PointTransactionService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Page<PointTransaction> getPointTransactionsByUserId(Long userId, Pageable pageable) throws InstanceNotFoundException{
         
         permissionChecker.checkUser(userId);
@@ -103,7 +103,7 @@ public class PointTransactionServiceImpl implements PointTransactionService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Optional<PointTransaction> findFirstByUserIdAndReasonAndEntityTypeAndEntityIdOrderByCreatedAtDesc(
         Long userId,
         PointTransaction.TransactionType reason,
