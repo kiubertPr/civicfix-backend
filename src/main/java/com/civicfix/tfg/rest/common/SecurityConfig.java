@@ -34,8 +34,6 @@ public class SecurityConfig {
 						sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(new JwtFilter(jwtGenerator), UsernamePasswordAuthenticationFilter.class)
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers("/h2-console/**").permitAll() //BBDD
-
 						.requestMatchers(HttpMethod.POST, "/users/signup").permitAll()
 						.requestMatchers(HttpMethod.POST, "/users/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/users/googleLogin").permitAll()
@@ -84,7 +82,7 @@ public class SecurityConfig {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
 		config.setAllowCredentials(true);
-		config.setAllowedOriginPatterns(Arrays.asList("*"));
+		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:5173","https://civicfix-frontend.vercel.app"));
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 

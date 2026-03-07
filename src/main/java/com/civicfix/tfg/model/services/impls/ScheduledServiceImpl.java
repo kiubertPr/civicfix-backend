@@ -52,7 +52,7 @@ public class ScheduledServiceImpl implements ScheduledService {
     }
 
     @Override
-    @Scheduled(cron = "0 */3 * * * ?")
+    @Scheduled(cron = "0 0 * * * ?")
     public void executeScheduledReset() {
 
         System.out.println("\n\n\nEjecutando tarea programada: Reinicio de archivos en la nube...\n\n\n");
