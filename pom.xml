@@ -22,8 +22,6 @@
 		<jjwt.version>0.11.5</jjwt.version>
 		<hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-
-		<project.contextPath>/civicfix</project.contextPath>
     </properties>
 
     <profiles>
@@ -62,13 +60,6 @@
 				<!-- Active by default so it can be installed by CI -->
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<properties>
-				<!--  Data source properties -->
-				<dataSource.url>jdbc:postgresql://localhost:5432/civicfix</dataSource.url>
-				<dataSource.driverClassName>org.postgresql.Driver</dataSource.driverClassName>
-				<dataSource.user>postgres</dataSource.user>
-				<dataSource.password>admin</dataSource.password>
-			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>org.postgresql</groupId>

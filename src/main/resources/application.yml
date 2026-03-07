@@ -8,10 +8,10 @@ spring:
     init:
       mode: always
   datasource:
-    url: @dataSource.url@
-    username: @dataSource.user@
-    password: @dataSource.password@
-    driver-class-name: @dataSource.driverClassName@
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
     max-active: 4
     max-idle: 2
     max-wait: 10000
@@ -73,8 +73,9 @@ spring:
       max-file-size: 15MB
       max-request-size: 15MB
 server:
+  port: ${PORT:8080}
   servlet:
-    context-path: @project.contextPath@
+    context-path: /civicfix
 
 project:
   jwt:
