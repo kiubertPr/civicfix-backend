@@ -82,7 +82,7 @@ public class SecurityConfig {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
 		config.setAllowCredentials(true);
-		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:5173","https://civicfix-frontend.vercel.app"));
+		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:5173","https://civicfix-frontend-roberto201090-7584s-projects.vercel.app", "https://civicfix-frontend-mu.vercel.app"));
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 
