@@ -21,6 +21,27 @@ public class FileServiceImpl implements FileService {
 
     private final Cloudinary cloudinary;
 
+    private static final List<String> DEFAULT_IMAGE = List.of(
+        "https://res.cloudinary.com/civicfix/image/upload/v1744723480/296fe121-5dfa-43f4-98b5-db50019738a7_hln3ql.jpg",
+        "parque-infantil",
+        "parque-descuidado",
+        "inauguracion-parque",
+        "facultad-abandono",
+        "edificio-abandonado",
+        "contenedores-sucios",
+        "banco-roto",
+        "bache",
+        "arbol-caido",
+        "acera-rota",
+        "limpieza-comunitaria",
+        "peatonal-obras",
+        "obras-centro-civico",
+        "alcantarilla-rota",
+        "sombra-parque",
+        "fuga-agua",
+        "taller-compostaje"
+        );
+
     public FileServiceImpl(Cloudinary cloudinary) {
         this.cloudinary = cloudinary;
     }
@@ -150,7 +171,9 @@ public class FileServiceImpl implements FileService {
     @Override
     public void deleteFile(String publicId) throws IOException {
         try {
-            cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+            if (!DEFAULT_IMAGE.contains(publicId)) {
+                cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+            }
         } catch (Exception e) {
             throw new IOException(e.getMessage());
         }
